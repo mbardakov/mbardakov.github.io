@@ -98,3 +98,6 @@ gulp.task('dev', ['browserSync', 'less', 'minify-css', 'minify-js'], function() 
 });
 
 // Todo: blog-inject trickery
+// idea: look for a comment formatted a particular way & inject html there
+// i.e. <!-- BLOG POSTS HERE --> is replaced with a bunch of <p> ... </p> etc.
+// can use a subset of MD for blog posts & write some form of interpreter for extra fanciness
