@@ -16,9 +16,32 @@ var banner = ['/*!\n',
     ''
 ].join('');
 
+// gulp.task('less', ['less:main', 'less:theme']);
+// gulp.task('less:main', function() {
+//   return gulp.src('./app/less/main.less')
+//     .pipe(less({ paths: [path.join(__dirname, 'less', 'includes')] }))
+//     .pipe(gulp.dest('./build/css'));
+// });
+// gulp.task('less:theme', function() {
+//   return gulp.src('./app/less/theme.less')
+//     .pipe(less({ paths: [path.join(__dirname, 'less', 'includes')] }))
+//     .pipe(gulp.dest('./build/css'));
+// });
+
+
 // Compile LESS files from /less into /css
-gulp.task('less', function() {
+gulp.task('less', ['less:theme', 'less:max']);
+gulp.task('less:theme', function() {
     return gulp.src('less/creative.less')
+        .pipe(less())
+        .pipe(header(banner, { pkg: pkg }))
+        .pipe(gulp.dest('css'))
+        .pipe(browserSync.reload({
+            stream: true
+        }))
+});
+gulp.task('less:max', function() {
+    return gulp.src('less/max.less')
         .pipe(less())
         .pipe(header(banner, { pkg: pkg }))
         .pipe(gulp.dest('css'))
