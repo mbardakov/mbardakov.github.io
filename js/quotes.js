@@ -1,6 +1,8 @@
 window.onload = function(){
     var quotebox = document.getElementById("intro-quote");
-    quotebox.innerText = "You're looking lovely today (:";
-    // come up with quotes to put here
-    // choose one with RNG
+    var quotes = ["You're looking lovely today.",
+        "I hope you have a fantastic day.",
+        "Thanks for stopping by!"];
+    quotebox.innerText = quotes[Math.floor(Math.random()*quotes.length)];
+    // probably nicer to store quotes in a .json file instead of hard-coded
 };
